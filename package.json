@@ -1,0 +1,27 @@
+{
+  "name": "depend-tree",
+  "description": "Simple dependency analyzer",
+  "version": "1.0.11",
+  "license": "MIT",
+  "homepage": "http://github.com/Sage-ERP-X3/depend-tree",
+  "author": {
+    "name": "Bruno Jouhier"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Sage-ERP-X3/depend-tree.git"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "js-yaml": "^3.4.3",
+    "streamline": "^1.0.11",
+    "streamline-runtime": "^1.0.15"
+  },
+  "main": "index.js",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/Sage-ERP-X3/depend-tree/issues"
+  }
+}

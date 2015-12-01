@@ -54,10 +54,37 @@ function reorder(obj) {
 		return r;
 	}, {})
 }
+
 dependencies = reorder(dependencies);
 rev = reorder(rev);
 
+function cyclesOnly(o1, o2) {
+	var cont = false;
+	do {
+		var modified = false;
+		Object.keys(o1).slice(0).forEach(function(k1) {
+			var empty = true;
+			Object.keys(o1[k1]).slice(0).forEach(function(k2) {
+				if (!o1[k2]) {
+					delete o1[k1][k2];
+					delete o2[k2];
+					cont = true;
+				} else {
+					empty = false;
+				}
+			});
+			if (empty) {
+				delete o1[k1];
+				modified = true;
+			}
+		});
+	} while (modified);
+	return cont;
+}
+
+while (cyclesOnly(dependencies, rev) && cyclesOnly(rev, dependencies));
+
 console.log(YAML.safeDump({
 	uses: dependencies,
-	'used-by': rev
+	//'used-by': rev
 }));
